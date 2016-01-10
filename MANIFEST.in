@@ -1,0 +1,10 @@
+include LICENSE
+include README.md
+recursive-include fb_rank/static *
+recursive-include fb_rank/templates *
+recursive-include fb_rank/templatetags *
+recursive-include fb_rank/management *
+recursive-include fb_rank/fixtures *
+recursive-include fb_rank/resources *
+global-exclude *pyc
+global-exclude ~*
