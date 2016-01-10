@@ -1,0 +1,8 @@
+dist/
+dist/*
+venv/
+venv/*
+*.egg-info/
+*.egg-info/*
+*.pyc
+*~
