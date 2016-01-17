@@ -19,7 +19,7 @@ def install():
         with cd(DEMO_PATH):
             local('pip install -r {}/requirements.txt'.format(DEMO_PATH))
 
-		# migrate db
+        # migrate db
         _django_local('makemigrations')
         _django_local('migrate')
 
@@ -35,6 +35,11 @@ def updatedb():
         _django_local('migrate')
 
 
+def ftest():
+    with _venv_local():
+        _django_local('test fts.Ranking -v 2')
+
+
 def _django_local(command):
     return local(
         'python {}/manage.py {}'.format(DEMO_PATH, command)
@@ -46,4 +51,3 @@ def _venv_local():
     with shell_env(DJANGO_SETTINGS_MODULE=SETTINGS_MODULE):
         with prefix('. %s/bin/activate' % VENV_PATH):
             yield
-
