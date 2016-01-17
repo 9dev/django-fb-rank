@@ -37,7 +37,7 @@ def updatedb():
 
 def ftest():
     with _venv_local():
-        _django_local('test fts.Ranking -v 2')
+        _django_local('test fts --pattern="*" -v 2')
 
 
 def _django_local(command):
