@@ -2,7 +2,7 @@ from contextlib import contextmanager
 from fabric.api import cd, env, local, prefix, shell_env
 
 
-VENV_PATH = 'venv'
+VENV_PATH = '~/.virtualenvs/fb_rank'
 PYTHON_PATH = '/usr/bin/python3.4'
 
 SETTINGS_MODULE = 'demo.settings'
