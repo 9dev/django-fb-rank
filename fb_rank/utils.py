@@ -36,3 +36,13 @@ def update_rank(qs):
             obj = items[k]
             rank = v['share']['share_count']
             CACHE.set('rank_{}_{}'.format(model_name, obj.pk), rank)
+
+
+def get_top(qs, limit=10, offset=0):
+    model_name = qs.model.__name__
+
+    for obj in qs:
+        obj.rank = CACHE.get('rank_{}_{}'.format(model_name, obj.pk), 0)
+
+    qs = sorted(qs, key=lambda o: o.rank, reverse=True)
+    return qs[offset:offset+limit]

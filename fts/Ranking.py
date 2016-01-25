@@ -43,3 +43,29 @@ class TestRankingUpdate(BaseTestCase):
         # She now sees updated item rank in cache.
         likes = CACHE.get(key)
         self.assertNotEqual(likes, 0)
+
+
+class TestItemsRanking(BaseTestCase):
+
+    def setUp(self):
+        qs = Item.objects.all()
+        update_rank(qs)
+        super(TestItemsRanking, self).setUp()
+
+    def tearDown(self):
+        CACHE.clear()
+        super(TestItemsRanking, self).tearDown()
+
+    def test_can_see_top_items_in_correct_order(self):
+        # Florence hits a page with a list of top items.
+        self.get(name='top_item_list')
+
+        # She sees the items ordered from the most popular to the least popular.
+        expected_output = '\n'.join([
+            '/',
+            '/example',
+            '/admin',
+            '/notexistingurl',
+        ])
+        body_text = self.browser.find_element_by_tag_name('body').text
+        self.assertIn(expected_output, body_text)
