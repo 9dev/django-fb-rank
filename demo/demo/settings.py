@@ -19,9 +19,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-	'debug_toolbar',
-	'main',
-	'fb_rank',
+    'debug_toolbar',
+    'main',
+    'fb_rank',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -85,3 +85,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+FB_ACCESS_TOKEN = os.getenv('FB_ACCESS_TOKEN', 'XYZ')
+FULL_URL_PREFIX = 'http://www.example.com'
