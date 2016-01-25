@@ -35,7 +35,12 @@ def updatedb():
         _django_local('migrate')
 
 
-def ftest():
+def ftest(target):
+    with _venv_local():
+        _django_local('test fts.Ranking.{} -v 2'.format(target))
+
+
+def testall():
     with _venv_local():
         _django_local('test fts --pattern="*" -v 2')
 
