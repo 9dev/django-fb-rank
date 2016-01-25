@@ -11,6 +11,10 @@ CACHE = caches['default']
 
 class TestRankingUpdate(BaseTestCase):
 
+    def tearDown(self):
+        CACHE.clear()
+        super(TestRankingUpdate, self).tearDown()
+
     def test_can_update_items_ranking_if_cache_does_not_exist(self):
         # Harriet makes sure that cache is empty.
         CACHE.clear()
