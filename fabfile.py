@@ -11,7 +11,6 @@ DEMO_PATH = 'demo'
 
 def install():
     # create virtualenv
-    local('rm -rf {}'.format(VENV_PATH))
     local('virtualenv -p {} {}'.format(PYTHON_PATH, VENV_PATH))
 
     with _venv_local():
@@ -26,6 +25,7 @@ def install():
 
 def runserver():
     with _venv_local():
+        _django_local('loaddata base.json')
         _django_local('runserver')
 
 

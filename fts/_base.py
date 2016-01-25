@@ -13,6 +13,9 @@ class BaseTestCase(StaticLiveServerTestCase):
     def setUp(self):
         self.browser = webdriver.Chrome(CHROMEDRIVER_PATH)
 
+    def tearDown(self):
+        self.browser.quit()
+
     def get(self, url=None, name=None, *args, **kwargs):
         if name:
             url = reverse(name, *args, **kwargs)
