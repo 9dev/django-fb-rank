@@ -1,0 +1,11 @@
+<html><body>
+
+<h1>Trending</h1>
+
+<ol>
+    {% for item in object_list %}
+        <li>/{{ item.slug }}</li>
+    {% endfor %}
+</ol>
+
+</body></html>

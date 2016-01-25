@@ -46,3 +46,14 @@ def get_top(qs, limit=10, offset=0):
 
     qs = sorted(qs, key=lambda o: o.rank, reverse=True)
     return qs[offset:offset+limit]
+
+
+def get_greater(qs, threshold, limit=10, offset=0):
+    model_name = qs.model.__name__
+
+    for obj in qs:
+        obj.rank = CACHE.get('rank_{}_{}'.format(model_name, obj.pk), 0)
+
+    qs = filter(lambda o: o.rank > threshold, qs)
+    qs = sorted(qs, key=lambda o: o.rank, reverse=True)
+    return qs[offset:offset+limit]

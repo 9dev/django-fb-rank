@@ -69,3 +69,16 @@ class TestItemsRanking(BaseTestCase):
         ])
         body_text = self.browser.find_element_by_tag_name('body').text
         self.assertIn(expected_output, body_text)
+
+    def test_can_see_only_items_above_some_threshold_on_trending_page(self):
+        # Florence hits the trending page.
+        self.get(name='trending_item_list')
+
+        # She sees items with a rank above the threshold.
+        body_text = self.browser.find_element_by_tag_name('body').text
+        expected_output = '\n'.join(['/', '/example'])
+        self.assertIn(expected_output, body_text)
+
+        # She doesn't see items with a rank below the threshold.
+        unexpected_output = '\n'.join(['/admin', '/notexistingurl'])
+        self.assertNotIn(unexpected_output, body_text)
