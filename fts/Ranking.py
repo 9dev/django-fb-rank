@@ -10,7 +10,6 @@ CACHE = caches['default']
 
 
 class TestRankingUpdate(BaseTestCase):
-    fixtures = ['base.json']
 
     def test_can_update_items_ranking_if_cache_does_not_exist(self):
         # Harriet makes sure that cache is empty.
@@ -26,3 +25,17 @@ class TestRankingUpdate(BaseTestCase):
         # She now sees new items in cache along with their rankings.
         likes = CACHE.get_many(keys)
         self.assertNotEqual(likes, {})
+
+    def test_can_update_items_ranking_if_cache_exists(self):
+        # Harriet makes sure that cache is not empty.
+        key = 'rank_Item_example'
+        CACHE.clear()
+        CACHE.set(key, 0)
+
+        # She triggers ranking update by hand.
+        qs = Item.objects.filter(slug='example')
+        update_rank(qs)
+
+        # She now sees updated item rank in cache.
+        likes = CACHE.get(key)
+        self.assertNotEqual(likes, 0)

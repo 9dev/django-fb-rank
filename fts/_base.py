@@ -8,7 +8,7 @@ CHROMEDRIVER_PATH = '/usr/bin/chromedriver'
 
 
 class BaseTestCase(StaticLiveServerTestCase):
-    fixtures = ['test.json']
+    fixtures = ['base.json']
 
     def setUp(self):
         self.browser = webdriver.Chrome(CHROMEDRIVER_PATH)
