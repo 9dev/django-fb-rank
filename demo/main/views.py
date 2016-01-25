@@ -1,6 +1,7 @@
-from django.http import HttpResponse
+from django.views.generic import DetailView
+
+from main.models import Item
 
 
-def index(request):
-	return HttpResponse('Hello')
-
+class ItemDetailView(DetailView):
+    model = Item

@@ -4,6 +4,5 @@ from main import views
 
 
 urlpatterns = [
-	url(r'^$', views.index, name='index'),
+    url(r'^(?P<slug>.*)', views.ItemDetailView.as_view(), name='item_detail'),
 ]
-
