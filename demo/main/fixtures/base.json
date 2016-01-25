@@ -9,14 +9,6 @@
   },
   {
     "model": "main.item",
-    "pk": 2,
-    "fields": {
-      "name": "Popular page",
-      "slug": "example"
-    }
-  },
-  {
-    "model": "main.item",
     "pk": 3,
     "fields": {
       "name": "Ordinary page",
@@ -25,18 +17,18 @@
   },
   {
     "model": "main.item",
-    "pk": 4,
+    "pk": 2,
     "fields": {
-      "name": "Completely unpopular page",
-      "slug": "notexistingurl"
+      "name": "Popular page",
+      "slug": "example"
     }
   },
   {
     "model": "main.item",
-    "pk": 5,
+    "pk": 4,
     "fields": {
-      "name": "Another completely unpopular page",
-      "slug": "anotherdeadurl"
+      "name": "Completely unpopular page",
+      "slug": "notexistingurl"
     }
   }
 ]
