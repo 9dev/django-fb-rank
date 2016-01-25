@@ -1,0 +1,42 @@
+[
+  {
+    "model": "main.item",
+    "pk": 1,
+    "fields": {
+      "name": "Homepage",
+      "slug": ""
+    }
+  },
+  {
+    "model": "main.item",
+    "pk": 2,
+    "fields": {
+      "name": "Popular page",
+      "slug": "example"
+    }
+  },
+  {
+    "model": "main.item",
+    "pk": 3,
+    "fields": {
+      "name": "Ordinary page",
+      "slug": "admin"
+    }
+  },
+  {
+    "model": "main.item",
+    "pk": 4,
+    "fields": {
+      "name": "Completely unpopular page",
+      "slug": "notexistingurl"
+    }
+  },
+  {
+    "model": "main.item",
+    "pk": 5,
+    "fields": {
+      "name": "Another completely unpopular page",
+      "slug": "anotherdeadurl"
+    }
+  }
+]
