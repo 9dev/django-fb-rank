@@ -14,7 +14,7 @@ class BaseTestCase(StaticLiveServerTestCase):
         self.browser = webdriver.Chrome(CHROMEDRIVER_PATH)
 
     def tearDown(self):
-        self.browser.quit()
+        self.browser.close()
 
     def get(self, url=None, name=None, *args, **kwargs):
         if name:
