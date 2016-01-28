@@ -1,11 +1,16 @@
-<html><body>
+{% extends 'base.html' %}
 
-<h1>Trending</h1>
+{% block title %}Trending items{% endblock title %}
 
-<ol>
-    {% for item in object_list %}
-        <li>/{{ item.slug }}</li>
-    {% endfor %}
-</ol>
-
-</body></html>
+{% block content %}
+    <h1>Trending</h1>
+    <ol>
+        {% for item in object_list %}
+            <li>
+                <a href="{{ item.get_absolute_url }}">
+                    /{{ item.slug }}
+                </a>
+            </li>
+        {% endfor %}
+    </ol>
+{% endblock content %}
