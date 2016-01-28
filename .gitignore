@@ -6,3 +6,4 @@ demo/cache/
 *.egg-info/*
 *.pyc
 *~
+.coverage*

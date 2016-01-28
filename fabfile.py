@@ -42,7 +42,12 @@ def ftest(target):
 
 def testall():
     with _venv_local():
-        _django_local('test fts --pattern="*" -v 2')
+        local('rm -f {}/.coverage*'.format(DEMO_PATH))
+        local('coverage run -p {}/manage.py test main.tests --noinput -v 2'.format(DEMO_PATH))
+        local('coverage run -p {}/manage.py test fts --pattern="*" -v 2'.format(DEMO_PATH))
+        local('coverage combine')
+        local('coverage report -m --omit="{}/*"'.format(VENV_PATH))
+        local('rm -f {}/.coverage*'.format(DEMO_PATH))
 
 
 def _django_local(command):
