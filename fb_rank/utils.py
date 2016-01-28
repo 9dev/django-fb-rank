@@ -7,7 +7,8 @@ from django.conf import settings
 
 BATCH_SIZE = 50
 API_URL = 'https://graph.facebook.com'
-CACHE = caches['default']
+CACHE_NAME = getattr(settings, 'FB_RANK_CACHE_NAME', 'default')
+CACHE = caches[CACHE_NAME]
 
 
 def update_rank(qs):

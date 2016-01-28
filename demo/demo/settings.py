@@ -65,7 +65,11 @@ DATABASES = {
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': os.path.join(BASE_DIR, 'cache'),
+        'LOCATION': os.path.join(BASE_DIR, 'cache/default/'),
+    },
+    'ranking': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, 'cache/ranking/'),
     }
 }
 
@@ -93,4 +97,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 FB_ACCESS_TOKEN = os.getenv('FB_ACCESS_TOKEN', 'XYZ')
+FB_RANK_CACHE_NAME = 'ranking'
 FULL_URL_PREFIX = 'http://www.example.com'

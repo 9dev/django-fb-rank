@@ -7,7 +7,7 @@ from ._base import BaseTestCase
 from main.models import Item
 
 
-CACHE = caches['default']
+CACHE = caches['ranking']
 
 
 class TestRankingUpdate(BaseTestCase):
