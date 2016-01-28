@@ -1,6 +1,7 @@
 dist/
 venv/
 .idea/
+demo/cache/
 *.egg-info/
 *.egg-info/*
 *.pyc
