@@ -3,10 +3,10 @@
 {% block title %}Trending items{% endblock title %}
 
 {% block content %}
-    <h1>Trending</h1>
-    <ol>
+    <h1>Trending items</h1>
+    <ol class="list-group">
         {% for item in object_list %}
-            <li>
+            <li class="list-group-item">
                 <a href="{{ item.get_absolute_url }}">
                     /{{ item.slug }}
                 </a>

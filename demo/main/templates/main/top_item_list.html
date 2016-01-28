@@ -3,10 +3,10 @@
 {% block title %}Top items{% endblock title %}
 
 {% block content %}
-    <h1>Top</h1>
-    <ol>
+    <h1>Top items</h1>
+    <ol class="list-group">
         {% for item in object_list %}
-            <li>
+            <li class="list-group-item">
                 <a href="{{ item.get_absolute_url }}">
                     /{{ item.slug }}
                 </a>

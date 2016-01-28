@@ -5,6 +5,7 @@
 
 {% block content %}
     <h1>{{ item.name }}</h1>
-    <p>Path: <b>/{{ item.slug }}</b></p>
-    <p>Total shares: <strong id="id_rank">{% get_rank item %}</strong></p>
+    <h2>Path: /{{ item.slug }}</h2>
+    <h3>Total shares: <span id="id_rank">{% get_rank item %}</span></h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse cursus eros at ante semper consectetur. Nunc eget laoreet augue, a convallis diam. Nullam dictum mauris turpis, vel semper ligula consectetur et. Proin consequat dui tortor. Integer dapibus at lectus id cursus. Proin sit amet nisl leo. Pellentesque placerat sed libero nec lobortis. Maecenas sed enim posuere, eleifend dui a, pulvinar tortor.</p>
 {% endblock content %}

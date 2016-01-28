@@ -5,3 +5,12 @@ body {
 .starter-template {
   padding: 10px 15px;
 }
+
+#id_rank {
+    color: red;
+}
+
+.list-group-item {
+    display: list-item;
+    font-size: 20px;
+}
