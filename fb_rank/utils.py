@@ -57,3 +57,8 @@ def get_greater(qs, threshold, limit=10, offset=0):
     qs = filter(lambda o: o.rank > threshold, qs)
     qs = sorted(qs, key=lambda o: o.rank, reverse=True)
     return qs[offset:offset+limit]
+
+
+def get_rank(obj):
+    model_name = obj.__class__.__name__
+    return CACHE.get('rank_{}_{}'.format(model_name, obj.pk), 0)

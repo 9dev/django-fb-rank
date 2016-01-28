@@ -82,3 +82,11 @@ class TestItemsRanking(BaseTestCase):
         # She doesn't see items with a rank below the threshold.
         unexpected_output = '\n'.join(['/admin', '/notexistingurl'])
         self.assertNotIn(unexpected_output, body_text)
+
+    def test_can_see_rank_of_a_single_item(self):
+        # Florence hits a detail page for an item.
+        self.get(name='item_detail', kwargs={'slug': 'example'})
+
+        # She sees its rank.
+        rank = self.browser.find_element_by_id('id_rank').text
+        self.assertTrue(0 < int(rank) < 100)

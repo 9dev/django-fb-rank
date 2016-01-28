@@ -1,3 +1,6 @@
+{% load fb_rank %}
+
 <h1>{{ item.name }}</h1>
 <p>Path: <b>/{{ item.slug }}</b></p>
+<p>Rank: <strong id="id_rank">{% get_rank item %}</strong></p>
 <p>This is an item detail page.</p>
