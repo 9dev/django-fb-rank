@@ -1,7 +1,8 @@
 from django.core.cache import caches
+from django.core.management import call_command
+from django.utils.six import StringIO
 
 from ._base import BaseTestCase
-from fb_rank.utils import update_rank
 
 from main.models import Item
 
@@ -24,7 +25,7 @@ class TestRankingUpdate(BaseTestCase):
         self.assertEqual(likes, {})
 
         # She triggers ranking update for all the items.
-        update_rank(qs)
+        call_command('update_rank', stdout=StringIO())
 
         # She now sees new items in cache along with their rankings.
         likes = CACHE.get_many(keys)
@@ -37,8 +38,7 @@ class TestRankingUpdate(BaseTestCase):
         CACHE.set(key, 0)
 
         # She triggers ranking update by hand.
-        qs = Item.objects.filter(slug='example')
-        update_rank(qs)
+        call_command('update_rank', stdout=StringIO())
 
         # She now sees updated item rank in cache.
         likes = CACHE.get(key)
@@ -48,8 +48,7 @@ class TestRankingUpdate(BaseTestCase):
 class TestItemsRanking(BaseTestCase):
 
     def setUp(self):
-        qs = Item.objects.all()
-        update_rank(qs)
+        call_command('update_rank', stdout=StringIO())
         super(TestItemsRanking, self).setUp()
 
     def tearDown(self):
