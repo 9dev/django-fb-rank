@@ -1,7 +1,7 @@
 from django.views.generic import DetailView, ListView
 
-from main.models import Item
 from fb_rank.utils import get_top, get_greater
+from .models import Item
 
 
 class ItemDetailView(DetailView):

@@ -1,5 +1,5 @@
 from contextlib import contextmanager
-from fabric.api import cd, env, local, prefix, shell_env
+from fabric.api import cd, local, prefix, shell_env
 
 
 VENV_PATH = '~/.virtualenvs/fb_rank'
@@ -10,15 +10,12 @@ DEMO_PATH = 'demo'
 
 
 def install():
-    # create virtualenv
     local('virtualenv -p {} {}'.format(PYTHON_PATH, VENV_PATH))
 
     with _venv_local():
-        # install requirements
         with cd(DEMO_PATH):
             local('pip install -r {}/requirements.txt'.format(DEMO_PATH))
 
-        # migrate db
         _django_local('makemigrations')
         _django_local('migrate')
 
