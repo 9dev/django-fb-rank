@@ -1,6 +1,6 @@
 # django-fb-rank
 
-``django-fb-rank`` allows you to create a ranking of objects in your model, based on total Facebook shares.
+``django-fb-rank`` allows you to create a ranking of objects in your model, based on a number of Facebook shares.
 
 ## Installation
 
