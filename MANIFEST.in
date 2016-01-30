@@ -6,5 +6,6 @@ recursive-include fb_rank/templatetags *
 recursive-include fb_rank/management *
 recursive-include fb_rank/fixtures *
 recursive-include fb_rank/resources *
+recursive-include fb_rank/migrations *
 global-exclude *pyc
 global-exclude ~*
