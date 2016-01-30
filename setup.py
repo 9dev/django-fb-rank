@@ -14,7 +14,7 @@ setup(
     packages=['fb_rank'],
     include_package_data=True,
     license='MIT License',
-    description='...',
+    description='Django app that creates a ranking of objects in your model, based on a number of Facebook shares.',
     long_description=README,
     url='https://github.com/9dev/django-fb-rank',
     author='9dev',
