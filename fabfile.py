@@ -45,7 +45,6 @@ def utest():
 def testall():
     with _venv_local():
         local('rm -f {}/.coverage*'.format(DEMO_PATH))
-        local('coverage run -p {}/manage.py test main.tests -v 2'.format(DEMO_PATH))
         local('coverage run -p {}/manage.py test fb_rank.tests -v 2'.format(DEMO_PATH))
         local('coverage run -p {}/manage.py test fts --pattern="*" -v 2'.format(DEMO_PATH))
         local('coverage combine')
