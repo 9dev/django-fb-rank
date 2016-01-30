@@ -37,10 +37,16 @@ def ftest(target):
         _django_local('test fts.Ranking.{} -v 2'.format(target))
 
 
+def utest():
+    with _venv_local():
+        _django_local('test fb_rank.tests -v 2')
+
+
 def testall():
     with _venv_local():
         local('rm -f {}/.coverage*'.format(DEMO_PATH))
-        local('coverage run -p {}/manage.py test main.tests --noinput -v 2'.format(DEMO_PATH))
+        local('coverage run -p {}/manage.py test main.tests -v 2'.format(DEMO_PATH))
+        local('coverage run -p {}/manage.py test fb_rank.tests -v 2'.format(DEMO_PATH))
         local('coverage run -p {}/manage.py test fts --pattern="*" -v 2'.format(DEMO_PATH))
         local('coverage combine')
         local('coverage report -m --omit="{}/*"'.format(VENV_PATH))
