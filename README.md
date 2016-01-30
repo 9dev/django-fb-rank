@@ -1,6 +1,6 @@
 # django-fb-rank
 
-``django-fb-rank`` allows you to create a ranking of objects in your model, based on a number of Facebook shares.
+Django app that creates a ranking of objects in your model, based on a number of Facebook shares.
 
 ## Installation
 
@@ -9,11 +9,11 @@
 - Update your settings:
     - `CACHES`: You cannot use `LocMemCache` (no cross-process caching is possible with this backend). Optionally you can specify which cache you want to use by adding `FB_RANK_CACHE_NAME` to your settings.
     
-          FB_RANK_CACHE_NAME = 'mycache'
+            FB_RANK_CACHE_NAME = 'mycache'
 
     - `FULL_URL_PREFIX`: Default protocol and your domain (without leading slash).
     
-          FULL_URL_PREFIX = 'http://www.example.com'
+            FULL_URL_PREFIX = 'http://www.example.com'
     
     - `FB_ACCESS_TOKEN`: Your Facebook access token (you need Facebook app first).
 
