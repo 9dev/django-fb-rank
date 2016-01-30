@@ -18,7 +18,7 @@ def update_rank(qs):
 
     for i in range(batch_count):
         items = {}
-        for obj in qs[i*BATCH_SIZE:i*BATCH_SIZE+BATCH_SIZE-1]:
+        for obj in qs[i*BATCH_SIZE:i*BATCH_SIZE+BATCH_SIZE]:
             full_url = settings.FULL_URL_PREFIX + obj.get_absolute_url()
             items[full_url] = obj
 
