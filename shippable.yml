@@ -3,14 +3,13 @@ language: python
 
 python:
   - 3.4
-addons:
-  - firefox: "28.0"
 services:
   - selenium: "2.43"
 
 env:
   global:
     - DISPLAY=:99.0
+    # DJANGO_SETTINGS_MODULE
 
 branches:
   only:
@@ -22,8 +21,14 @@ install:
 before_script: 
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
+  - "curl -o /tmp/chromedriver.zip -L http://chromedriver.storage.googleapis.com/2.21/chromedriver_linux64.zip"
+  - "unzip /tmp/chromedriver.zip -d /home/shippable/bin"
+  - "chmod +x /home/shippable/bin/chromedriver"
+  - "echo '#!/bin/bash' | sudo tee /usr/bin/google-chrome"
+  - "echo 'exec /usr/bin/chrome --no-sandbox --disable-gpu \"$@\"' | sudo tee -a /usr/bin/google-chrome"
+  - "sudo chmod +x /usr/bin/google-chrome"
   #- mysql -e 'create database test;'
-  - /etc/init.d/xvfb start 
+  - /etc/init.d/xvfb start
 
 script:
   - python demo/manage.py test fts --pattern="*" -v 2
@@ -31,12 +36,5 @@ script:
 after_script:
   #- coverage here...
   - /etc/init.d/xvfb stop
-
-notifications:
-   email:
-     recipients:
-       - 9devmail@gmail.com
-     on_success: change
-     on_failure: always
 
 archive: true
