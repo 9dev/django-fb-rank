@@ -1,0 +1,42 @@
+
+language: python
+
+python:
+  - 3.4
+addons:
+  - firefox: "28.0"
+services:
+  - selenium: "2.43"
+
+env:
+  global:
+    - DISPLAY=:99.0
+
+branches:
+  only:
+    - master
+
+install:
+  - pip install -r demo/requirements.txt
+
+before_script: 
+  - mkdir -p shippable/testresults
+  - mkdir -p shippable/codecoverage
+  #- mysql -e 'create database test;'
+  - /etc/init.d/xvfb start 
+
+script:
+  - python demo/manage.py test fts --pattern="*" -v 2
+
+after_script:
+  #- coverage here...
+  - /etc/init.d/xvfb stop
+
+notifications:
+   email:
+     recipients:
+       - 9devmail@gmail.com
+     on_success: change
+     on_failure: always
+
+archive: true
