@@ -24,9 +24,10 @@ before_script:
   - "curl -o /tmp/chromedriver.zip -L http://chromedriver.storage.googleapis.com/2.21/chromedriver_linux64.zip"
   - "unzip /tmp/chromedriver.zip -d /home/shippable/bin"
   - "chmod +x /home/shippable/bin/chromedriver"
-  - "echo '#!/bin/bash' | sudo tee /usr/bin/chromedriver"
-  - "echo 'exec /usr/bin/chrome --no-sandbox --disable-gpu \"$@\"' | sudo tee -a /usr/bin/chromedriver"
-  - "sudo chmod +x /usr/bin/chromedriver"
+  - "echo '#!/bin/bash' | sudo tee /usr/bin/google-chrome"
+  - "echo 'exec /usr/bin/chrome --no-sandbox --disable-gpu \"$@\"' | sudo tee -a /usr/bin/google-chrome"
+  - "sudo chmod +x /usr/bin/google-chrome"
+  - "sudo mv /usr/bin/google-chrome /usr/bin/chromedriver"
   #- mysql -e 'create database test;'
   - /etc/init.d/xvfb start
 
