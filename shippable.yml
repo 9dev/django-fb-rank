@@ -27,7 +27,6 @@ before_script:
   - "echo '#!/bin/bash' | sudo tee /usr/bin/google-chrome"
   - "echo 'exec /usr/bin/chrome --no-sandbox --disable-gpu \"$@\"' | sudo tee -a /usr/bin/google-chrome"
   - "sudo chmod +x /usr/bin/google-chrome"
-  - "sudo mv /usr/bin/google-chrome /usr/bin/chromedriver"
   #- mysql -e 'create database test;'
   - /etc/init.d/xvfb start
 

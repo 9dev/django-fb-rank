@@ -85,11 +85,11 @@ Of course, to do that you need to have `fabric` installed on your computer.
 ## Tests
 
 Tests assume that Selenium's ChromeDriver can be found at:
-> /usr/bin/chromedriver
+> /usr/bin/google-chrome
 
 It also needs correct permissions. Make sure to run:
 
-    $ sudo chmod a+x /usr/bin/chromedriver
+    $ sudo chmod a+x /usr/bin/google-chrome
 
 To run all the tests simply type:
 
