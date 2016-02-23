@@ -4,7 +4,8 @@ language: python
 python:
   - 3.4
 services:
-  - selenium: "2.43"
+  - selenium
+  #: "2.43"
 
 env:
   global:
@@ -21,7 +22,7 @@ install:
 before_script: 
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
-  - "curl -o /tmp/chromedriver.zip -L http://chromedriver.storage.googleapis.com/2.21/chromedriver_linux64.zip"
+  - "curl -o /tmp/chromedriver.zip -L http://chromedriver.storage.googleapis.com/2.10/chromedriver_linux64.zip"
   - "unzip /tmp/chromedriver.zip -d /home/shippable/bin"
   - "chmod +x /home/shippable/bin/chromedriver"
   - "echo '#!/bin/bash' | sudo tee /usr/bin/google-chrome"
