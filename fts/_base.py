@@ -4,7 +4,7 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.core.urlresolvers import reverse
 
 
-CHROMEDRIVER_PATH = '../bin/chromedriver'
+CHROMEDRIVER_PATH = 'bin/chromedriver'
 
 
 class BaseTestCase(StaticLiveServerTestCase):
