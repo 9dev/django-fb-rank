@@ -3,39 +3,25 @@ language: python
 
 python:
   - 3.4
+  # 3.5 ?
 services:
   - selenium
   #: "2.43"
-
-env:
-  global:
-    - DISPLAY=:99.0
-    # DJANGO_SETTINGS_MODULE
 
 branches:
   only:
     - master
 
-install:
-  - pip install -r demo/requirements.txt
-
-before_script: 
-  - mkdir -p shippable/testresults
-  - mkdir -p shippable/codecoverage
-  - "curl -o /tmp/chromedriver.zip -L http://chromedriver.storage.googleapis.com/2.10/chromedriver_linux64.zip"
-  - "unzip /tmp/chromedriver.zip -d /home/shippable/bin"
-  - "chmod +x /home/shippable/bin/chromedriver"
-  - "echo '#!/bin/bash' | sudo tee /usr/bin/google-chrome"
-  - "echo 'exec /usr/bin/chrome --no-sandbox --disable-gpu \"$@\"' | sudo tee -a /usr/bin/google-chrome"
-  - "sudo chmod +x /usr/bin/google-chrome"
-  #- mysql -e 'create database test;'
-  - /etc/init.d/xvfb start
-
-script:
-  - python demo/manage.py test fts --pattern="*" -v 2
-
-after_script:
-  #- coverage here...
-  - /etc/init.d/xvfb stop
-
-archive: true
+build:
+    pre_ci_boot:
+        image_name: drydock/u14pytall
+        image_tag: latest
+        pull: true
+    ci:
+      - mkdir -p shippable/testresults
+      - mkdir -p shippable/codecoverage
+      - DISPLAY=:99.0
+      # DJANGO_SETTINGS_MODULE
+      - pip install -r demo/requirements.txt
+      - xvfb-run --server-args="-ac" python demo/manage.py test fts --pattern="*" -v 2
+      # coverage
