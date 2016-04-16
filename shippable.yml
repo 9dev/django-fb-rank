@@ -15,7 +15,7 @@ branches:
 build:
     pre_ci_boot:
         image_name: drydock/u14pytall
-        image_tag: latest
+        image_tag: prod
         pull: true
     ci:
       - mkdir -p shippable/testresults
