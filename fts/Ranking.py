@@ -89,3 +89,11 @@ class TestItemsRanking(BaseTestCase):
         # She sees its rank.
         rank = self.browser.find_element_by_id('id_rank').text
         self.assertTrue(0 < int(rank) < 100)
+
+
+class DummyTest(BaseTestCase):
+
+    def test_dummy(self):
+        self.assertEquals(1, 1)
+        self.get('/')
+        self.assertEquals(1, 1)
