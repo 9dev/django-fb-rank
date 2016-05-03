@@ -24,4 +24,5 @@ build:
       - export DJANGO_SETTINGS_MODULE="demo.settings"
       - pip install -r demo/requirements.txt
       #- xvfb-run --server-args="-ac" python demo/manage.py test fts --pattern="*" -v 2
-      - xvfb-run --server-args="-ac" coverage run -o shippable/codecoverage/coverage.xml -p demo/manage.py test fts --pattern="*" -v 2
+      - xvfb-run --server-args="-ac" coverage run -p demo/manage.py test fts --pattern="*" -v 2
+      - coverage xml -o shippable/codecoverage/coverage.xml
