@@ -18,10 +18,10 @@ build:
         image_tag: prod
         pull: true
     ci:
-      - mkdir -p shippable/testresults
+      #- mkdir -p shippable/testresults
       - mkdir -p shippable/codecoverage
       - DISPLAY=:99.0
       - export DJANGO_SETTINGS_MODULE="demo.settings"
       - pip install -r demo/requirements.txt
-      - xvfb-run --server-args="-ac" python demo/manage.py test fts --pattern="*" -v 2
+      #- xvfb-run --server-args="-ac" python demo/manage.py test fts --pattern="*" -v 2
       - xvfb-run --server-args="-ac" coverage run -p demo/manage.py test fts --pattern="*" -v 2 -o shippable/codecoverage/coverage.xml
