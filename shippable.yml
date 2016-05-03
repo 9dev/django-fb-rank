@@ -1,7 +1,7 @@
 
 language: python
 
-# TODO update settings.py and requirements.txt
+# TODO update settings.py (test settings only) and requirements.txt
 
 python:
   - 3.5
@@ -18,7 +18,7 @@ build:
         image_tag: prod
         pull: true
     ci:
-      #- mkdir -p shippable/testresults
+      - mkdir -p shippable/testresults
       - mkdir -p shippable/codecoverage
       - DISPLAY=:99.0
       - export DJANGO_SETTINGS_MODULE="demo.settings"
