@@ -2,11 +2,9 @@
 language: python
 
 python:
-  - 3.4
-  # 3.5 ?
+  - 3.5
 services:
-  - selenium
-  #: "2.43"
+  - selenium: "2.44"
 
 branches:
   only:
@@ -21,7 +19,7 @@ build:
       - mkdir -p shippable/testresults
       - mkdir -p shippable/codecoverage
       - DISPLAY=:99.0
-      # DJANGO_SETTINGS_MODULE
+      - export DJANGO_SETTINGS_MODULE="demo.demo.settings"
       - pip install -r demo/requirements.txt
-      - xvfb-run --server-args="-ac" python demo/manage.py test fts --pattern="*" -v 2
-      # coverage
+      - xvfb-run --server-args="-ac" python demo/manage.py test fts --pattern="*" -v 2 > shippable/testresults/testresults.xml
+      - xvfb-run --server-args="-ac" coverage run -p demo/manage.py test fts --pattern="*" -v 2 -o shippable/codecoverage/coverage.xml
