@@ -25,4 +25,4 @@ build:
       - pip install -r demo/requirements.txt
       - xvfb-run --server-args="-ac" coverage run -p demo/manage.py test fts --pattern="*" -v 2
       - coverage combine
-      - coverage xml -o shippable/codecoverage/coverage.xml
+      - coverage xml -o shippable/codecoverage/coverage.xml --omit="/root/venv/*"
