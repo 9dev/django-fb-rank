@@ -103,5 +103,5 @@ FULL_URL_PREFIX = 'http://www.example.com'
 
 TEST_RUNNER = 'xmlrunner.extra.djangotestrunner.XMLTestRunner'
 TEST_OUTPUT_VERBOSE = 1
-TEST_OUTPUT_DIR = 'shippable/testresults'
-TEST_OUTPUT_FILE_NAME = 'testresults.xml'
+TEST_OUTPUT_DIR = 'shippable/codecoverage'
+TEST_OUTPUT_FILE_NAME = 'codecoverage.xml'
