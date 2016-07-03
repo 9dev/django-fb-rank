@@ -23,6 +23,7 @@ build:
       - DISPLAY=:99.0
       - export DJANGO_SETTINGS_MODULE="demo.settings"
       - pip install -r demo/requirements.txt
+      - xvfb-run --server-args="-ac" coverage run -p demo/manage.py test -v 2
       - xvfb-run --server-args="-ac" coverage run -p demo/manage.py test fts --pattern="*" -v 2
       - coverage combine
       - coverage xml -o shippable/codecoverage/testresults.xml --omit="/root/venv/*"
